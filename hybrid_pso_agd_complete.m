@@ -299,7 +299,7 @@ function [best_pos, best_fit, history] = hybrid_pso_agd(func, dim, bounds, num_p
                 end
                 
                 x_current = positions(i, :);
-                grad = compute_gradient(func, x_current, grad_eps);
+                grad = compute_gradient(func, x_current, grad_eps); %use gardient decent
                 x_new = x_current - eta_t * grad;
                 x_new = max(min(x_new, upper), lower);
                 
@@ -349,7 +349,7 @@ function [best_pos, best_fit, history] = hybrid_pso_agd(func, dim, bounds, num_p
     best_fit = gbest_fitness;
 end
 
-function grad = compute_gradient(func, x, eps)
+function grad = compute_gradient(func, x, eps) %gradient function
     dim = length(x);
     grad = zeros(1, dim);
     
