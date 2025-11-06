@@ -286,7 +286,7 @@ function [best_pos, best_fit, history] = hybrid_pso_agd(func, dim, bounds, num_p
             [~, top_indices] = sort(pbest_fitness);
             top_indices = top_indices(1:top_k);
             
-            eta_t = eta_0 / (1 + alpha * t);
+            eta_t = eta_0 / (1 + alpha * t); % new (n) learning rateformula
             
             for idx = 1:length(top_indices)
                 i = top_indices(idx);
@@ -494,4 +494,3 @@ function plot_summary_comparison(all_results)
     legend('Standard PSO', 'Hybrid PSO-AGD', 'Location', 'best');
     grid on;
 end
-
